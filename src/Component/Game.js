@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
+import styled from 'styled-components'
 import Board from './Board';
-import './Game.css';
 
 function Game() {
   // Mutable states
@@ -12,9 +12,9 @@ function Game() {
   const whoPlays = currentMove % 2 === 0 ? 'X' : 'O'; // Current players X or O
   const moves = history.map((_squares, move) => ( // Display history
     <li key={move}>
-      <button type='button' className='Link' onClick={() => setCurrentMove(move)}>
+      <Link onClick={() => setCurrentMove(move)}>
         { move ? `Go to move #${move}` : 'Go to game start' }
-      </button>
+      </Link>
     </li>
   ));
   const status = winner(currentSquares)
@@ -60,16 +60,44 @@ function Game() {
   }
 
   return (
-    <div className='Game'>
-      <h2 className='GameStatus'>{ status }</h2>
-      <div className='GameBoard'>
+    <Wrapper>
+      <GameStatus>{ status }</GameStatus>
+      <GameBoard>
         <Board squares={currentSquares} onSquareClick={onPlay} />
-      </div>
-      <div className='GameInfo'>
+      </GameBoard>
+      <GameInfo>
         <ol>{ moves }</ol>
-      </div>
-    </div>
+      </GameInfo>
+    </Wrapper>
   )
 }
+
+const Wrapper = styled.div`
+  margin: 1em;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+`;
+const GameBoard = styled.div`
+  flex: 2;
+`;
+const GameInfo = styled.div`
+  flex: 1;
+`;
+const GameStatus = styled.h2`
+  width: 100%;
+  text-align: center;
+`;
+const Link = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: #4096ff;
+  font-weight: 700;
+  text-transform: uppercase;
+`;
 
 export default Game;
