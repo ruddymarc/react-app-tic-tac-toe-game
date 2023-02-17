@@ -37,6 +37,7 @@ function Game() {
 
   return (
     <div className='Game'>
+      <h2 className='GameStatus'>{ `Player : ${whoPlays}` }</h2>
       <div className='GameBoard'>
         <Board squares={currentSquares} onSquareClick={onPlay} />
       </div>

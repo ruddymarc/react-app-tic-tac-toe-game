@@ -2,9 +2,14 @@
   margin: 1em;
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
 }
 .GameInfo { flex: 1; }
 .GameBoard { flex: 2; }
+.GameStatus {
+  width: 100%;
+  text-align: center;
+}
 
 .Board {
   gap: 1em;
