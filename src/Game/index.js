@@ -17,9 +17,33 @@ function Game() {
       </button>
     </li>
   ));
+  const status = winner(currentSquares)
+    ? `Winner : ${winner(currentSquares)}`
+    : `Player : ${whoPlays}`;
 
   // Functionctions
-  const onPlay = (indice) => {
+  function winner(squares) {
+    const winnersPos = [
+      [0, 1, 2], // horizontal top
+      [3, 4, 5], // horizontal middle
+      [6, 7, 8], // horizontal bottom
+      [0, 3, 6], // vertical left
+      [1, 4, 7], // vertical center
+      [2, 5, 8], // vertical right
+      // oblics
+      [0, 4, 8],
+      [2, 4, 6],
+    ];
+
+    for (let i = 0; i < winnersPos.length; i++) {
+      const [a, b, c] = winnersPos[i];
+      if (squares.at(a) && squares.at(a) === squares.at(b) && squares.at(b) === squares.at(c)) {
+        return squares.at(a)
+      }
+    }
+    return (null)
+  }
+  function onPlay(indice) {
     const nextSquares = [...currentSquares];
     // prevent rewriting on square
     if (nextSquares[indice]) {
@@ -37,7 +61,7 @@ function Game() {
 
   return (
     <div className='Game'>
-      <h2 className='GameStatus'>{ `Player : ${whoPlays}` }</h2>
+      <h2 className='GameStatus'>{ status }</h2>
       <div className='GameBoard'>
         <Board squares={currentSquares} onSquareClick={onPlay} />
       </div>
