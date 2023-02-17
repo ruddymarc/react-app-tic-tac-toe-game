@@ -1,0 +1,32 @@
+.Game {
+  margin: 1em;
+  width: 100%;
+  display: flex;
+}
+.GameInfo { flex: 1; }
+.GameBoard { flex: 2; }
+
+.Board {
+  gap: 1em;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.Square,
+.Link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.Square {
+  height: 20vw;
+  font-size: 10vw;
+}
+.Link {
+  background: none;
+  border: none;
+  color: #4096ff;
+  font-weight: 700;
+  text-transform: uppercase;
+}
