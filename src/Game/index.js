@@ -20,6 +20,12 @@ function Game() {
 
   // Functionctions
   const onPlay = (indice) => {
+    const nextSquares = [...currentSquares];
+    nextSquares[indice] = whoPlays;
+    // Mark movements in history state
+    setHistory([...history, nextSquares]);
+    setCurrentMove(history.length);
+
     console.log({ 
       indice, currentSquares, history, currentMove, whoPlays
     });
