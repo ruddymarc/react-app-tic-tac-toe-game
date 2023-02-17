@@ -21,6 +21,10 @@ function Game() {
   // Functionctions
   const onPlay = (indice) => {
     const nextSquares = [...currentSquares];
+    // prevent rewriting on square
+    if (nextSquares[indice]) {
+      return;
+    }
     nextSquares[indice] = whoPlays;
     // Mark movements in history state
     setHistory([...history, nextSquares]);
