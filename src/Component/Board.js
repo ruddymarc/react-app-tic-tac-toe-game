@@ -7,7 +7,7 @@ function Board({ squares, onSquareClick }) {
     <Wrapper>
       { squares.map((label, key) => (
         <Square key={key} onClick={() => { onSquareClick(key) }}>
-          { label }
+          <Counter label={label}>{ label }</Counter>
         </Square>
       )) }
     </Wrapper>
@@ -33,6 +33,16 @@ const Square = styled.button`
   cursor: pointer;
   height: 20vw;
   font-size: 10vw;
+`;
+const Counter = styled.div`
+  display: ${props => props.label ? 'flex' : 'none'};
+  justify-content: center;
+  align-items: center;
+  width: 15vw;
+  height: 15vw;
+  color: grey;
+  border-radius: 50%;
+  background: ${props => props.label === 'X' ? 'blue' : 'red'};
 `;
 
 export default Board;
