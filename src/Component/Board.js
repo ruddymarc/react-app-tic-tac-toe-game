@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 function Board({ squares, onSquareClick }) {
   return (
@@ -12,6 +13,13 @@ function Board({ squares, onSquareClick }) {
     </Wrapper>
   )
 }
+
+Board.propTypes = {
+  squares: PropTypes.arrayOf(
+    PropTypes.oneOf(['X', 'O'])
+  ).isRequired,
+  onSquareClick: PropTypes.func.isRequired,
+};
 
 const Wrapper = styled.div`
   gap: 1em;
